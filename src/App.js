@@ -1,12 +1,15 @@
 import './App.css';
 import React, { Component } from 'react';
 
-import { Header } from './components/header';
-import { Footer } from './components/footer';
+
+
+
 import { Artists } from './components/artists';
 import { Content } from './components/content';
-import { Albums } from './components/albums';
+
 import { Songs } from './components/songs';
+import { Add } from './components/add';
+import { Show } from './components/show';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
@@ -24,10 +27,11 @@ class App extends Component {
           <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#home">MusicApp</Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link href="/content">Home</Nav.Link>
-              <Nav.Link href="/artists">Artists</Nav.Link>
-              <Nav.Link href="/albums">Albums</Nav.Link>
-              <Nav.Link href="/songs">Favorite Songs</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/show">show</Nav.Link>
+              <Nav.Link href="/add">add</Nav.Link>
+           
+
             </Nav>
 
           </Navbar>
@@ -36,9 +40,8 @@ class App extends Component {
           <br />
           <Switch>
             <Route path='/' component={Content} exact />
-            <Route path='/artists' component={Artists} exact />
-            <Route path='/albums' component={Albums} exact />
-            <Route path='/songs' component={Songs} exact />
+            <Route path='/show' component={Show} exact />
+            <Route path='/add' component={Add} exact />
           </Switch>
 
         </div>
