@@ -6,52 +6,44 @@ import axios from 'axios';
 
 
 export class Show extends React.Component {
-    favAlbums = {
-        albums:
-            [
 
-
-                {
-                    "Band": "The Stone Roses",
-                    "Album": "The Stone Roses",
-                    "Year": "1989",
-                    "Cover": "https://www.clashmusic.com/sites/default/files/field/image/R-156092-1534078946-7723.jpeg.jpg"
-                },
-                {
-                    "Band": "The Stone Roses",
-                    "Album": "The Stone Roses",
-                    "Year": "1989",
-                    "Cover": "https://www.clashmusic.com/sites/default/files/field/image/R-156092-1534078946-7723.jpeg.jpg"
-                },
-                {
-                    "Band": "The Stone Roses",
-                    "Album": "The Stone Roses",
-                    "Year": "1989",
-                    "Cover": "https://www.clashmusic.com/sites/default/files/field/image/R-156092-1534078946-7723.jpeg.jpg"
-                },
-                {
-                    "Band": "The Stone Roses",
-                    "Album": "The Stone Roses",
-                    "Year": "1989",
-                    "Cover": "https://www.clashmusic.com/sites/default/files/field/image/R-156092-1534078946-7723.jpeg.jpg"
-                }
-            ]
+    constructor() {
+        super();
+        this.ReloadData = this.ReloadData.bind(this);
 
     }
-    // when this componet is visable this method gets exe
-    componentDidMount() {
-        axios.get('')
+
+    state = {
+        music: []
+
+    }
+
+    ReloadData() {
+        axios.get('http://localhost:4000/api/albums')
             .then((response) => {
-                this.setState({ albums: response.data.Search })
+                this.setState({ music: response.data })
             })
             .catch((error) => {
-                console.log("err");
+                console.log(error)
+            });
+    }
+
+
+    // when this componet is visable this method gets exe
+    componentDidMount() {
+        axios.get('http://localhost:4000/api/albums')
+            .then((response) => {
+                this.setState({ music: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
             });
     }
     render() {
         return (
             <div className="App">
-                <Albums myalbums={this.favAlbums.albums}></Albums>
+                <Albums myalbums={this.state.music} ReloadData={this.ReloadData}></Albums>
+
             </div>
 
         );

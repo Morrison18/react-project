@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Albums } from './albums';
-
+import axios from 'axios';
 
 
 export class Add extends React.Component {
@@ -10,9 +10,9 @@ export class Add extends React.Component {
         super();
 
         this.onSubmit = this.onSubmit.bind(this);
-        this.onChange = this.onChangeAlbum.bind(this);
-        this.onChange = this.onChangeBand.bind(this);
-        this.onChange = this.onChangeCover.bind(this);
+        this.onChangeAlbum = this.onChangeAlbum.bind(this);
+        this.onChangeBand = this.onChangeBand.bind(this);
+        this.onChangeCover = this.onChangeCover.bind(this);
 
         this.state = {
             Band: "",
@@ -20,25 +20,40 @@ export class Add extends React.Component {
             Cover: ""
         }
     }
-    //only submit once
-    onSubmit(r) {
-        r.preventDefault();
-        alert("You've added "+ this.state.Album + " to your favorites." + this.state.Band +this.state.Cover)
-    }
+   
     onChangeAlbum(r) {
         this.setState({
             Album: r.target.value
-        })
+        });
     }
     onChangeBand(r) {
         this.setState({
             Band: r.target.value
-        })
+        });
     }
     onChangeCover(r) {
         this.setState({
             Cover: r.target.value
-        })
+        });
+    }
+     //only submit once
+     onSubmit(r) {
+        r.preventDefault();
+       alert('btn clicked' +this.state.Album +this.state.Band +this.state.Cover);
+
+        const newAlbum = {
+            Album: this.state.Album,
+            Band: this.state.Band,
+            Cover: this.state.Cover
+        };
+        // making post req to server 
+        axios.post('http://localhost:4000/api/albums', newAlbum)
+        .then(response =>
+            console.log(response.data))
+        
+        .catch((err)=>{
+            console.log(err)
+        });
     }
     render() {
         return (

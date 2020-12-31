@@ -1,16 +1,10 @@
 import './App.css';
 import React, { Component } from 'react';
-
-
-
-
 import { Artists } from './components/artists';
 import { Content } from './components/content';
-
 import { Songs } from './components/songs';
 import { Add } from './components/add';
 import { Show } from './components/show';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
