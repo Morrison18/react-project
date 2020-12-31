@@ -17,6 +17,10 @@ app.use(function (req, res, next) {
     next();
 });
 
+// config pointing to the build folder
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
@@ -35,7 +39,7 @@ const    MusicSchema = new Schema({
     Cover: String
 });
 
-const MusicModel = mongoose.model("music", MusicSchema);
+const MusicModel = mongoose.model("musics", MusicSchema);
 
 //sending json data
 app.get('/api/albums', (req, res) => {
@@ -91,6 +95,9 @@ app.post('/api/albums', (req, res) => {
 
 })
 
+app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname+'/../build/index.html'));
+})
 //listens for the url+port
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

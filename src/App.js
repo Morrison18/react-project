@@ -2,7 +2,6 @@ import './App.css';
 import React, { Component } from 'react';
 import { Update } from './components/update';
 import { Content } from './components/content';
-import { Songs } from './components/songs';
 import { Add } from './components/add';
 import { Show } from './components/show';
 import 'bootstrap/dist/css/bootstrap.min.css';
