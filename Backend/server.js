@@ -46,8 +46,8 @@ app.get('/api/albums', (req, res) => {
 });
 
 // show album by id
-app.get('/api/albums/:id', (req, res)=>{
-    console.log(req.bodyParser.id);
+app.get('/api/albums/:id', (req, res, next)=>{
+    console.log(req.params.id);
 
     MusicModel.findById(req.params.id, (err, data) =>{
         res.json(data);
@@ -59,6 +59,16 @@ app.delete('/api/albums/:id', (req,res)=>{
     console.log("delete Album:"+ req.params.id);
 
     MusicModel.findByIdAndDelete(req.params.id, (err, data)=> {
+        res.send(data);
+    })
+})
+
+// update function by id
+app.put('/api/albums/:id', (req, res)=>{
+    console.log("Update Album:"+ req.params.id);
+    console.log(req.body);
+
+    MusicModel.findByIdAndUpdate(req.param.id, req.body, {new:true},(err,data)=>{
         res.send(data);
     })
 })

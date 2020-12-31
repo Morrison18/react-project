@@ -4,6 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 export class Content extends React.Component {
     render() {
         return (
+            
             <Carousel>
                 <Carousel.Item>
                     <img

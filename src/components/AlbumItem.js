@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card'; // import the bootstrap card 
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
+import {Link, link} from 'react-router-dom';
 
 
 
@@ -29,20 +29,23 @@ constructor(){
 
     render() {
         return (
-            <div>
-                <Card style={{ textAlign: 'center' }}>
+            <body style={{ backgroundColor: '#b3b1b138'}}>
+            <div style={{margin: '.5% 20% 2.5% 20% '}} >
+                <Card style={{ textAlign: 'center', backgroundColor: '#a9f3d1'}}>
 
                     <Card.Body>
-                        <Card.Title style={{ fontSize: '40px' }}>{this.props.music.Album}</Card.Title>
+                        <Card.Title style={{ fontSize: '50px' }}>{this.props.music.Band}</Card.Title>
                         <Card.Text>
                             <img alt="imgtext" src={this.props.music.Cover} width="500" height="400"></img>
                         </Card.Text>
-                        <p style={{ fontSize: '30px' }}>{this.props.music.Band}</p>
+                        <p style={{ fontSize: '40px' }}>{this.props.music.Album}</p>
                     </Card.Body>
-                    <Button variant="danger" onClick={this.DeleteAlbum}>Delete</Button>  
+                    <Button variant="danger" onClick={this.DeleteAlbum} style={{ fontSize: '25px' }} >Delete</Button>  
+                    <Link to={"/update/"+ this.props.music._id} className="btn btn-info" style={{ fontSize: '25px' }}>Edit</Link>
                 </Card>
 
             </div>
+            </body>
         );
     }
 }
