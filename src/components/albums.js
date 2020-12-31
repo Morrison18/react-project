@@ -8,7 +8,7 @@ export class Albums extends React.Component {
 
     render() {
         return this.props.myalbums.map((music)=>{
-            return <AlbumItem music={music}></AlbumItem>
+            return <AlbumItem music={music} ReloadData={this.props.ReloadData}></AlbumItem>
         })
     }
 }

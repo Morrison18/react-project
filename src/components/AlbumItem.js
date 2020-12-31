@@ -14,10 +14,12 @@ constructor(){
 
     this.DeleteAlbum = this.DeleteAlbum.bind(this);
 }
- //this function uses axios to go to the url below and gets the movie by the id and deletes it 
+
+ //this function uses axios to go to the url below and gets the movie by the id and deletes it  then the reload data method is called 
  DeleteAlbum(r){
     r.preventDefault(); 
-    axios.delete('http://localhost:4000/api/movies/'+this.props.music._id) 
+
+    axios.delete('http://localhost:4000/api/albums/'+this.props.music._id) 
     .then(()=>{
         this.props.ReloadData();
     })
@@ -33,11 +35,11 @@ constructor(){
                     <Card.Body>
                         <Card.Title style={{ fontSize: '40px' }}>{this.props.music.Album}</Card.Title>
                         <Card.Text>
-                            <img alt="imgtext" src={this.props.music.Band} width="200" height="300"></img>
+                            <img alt="imgtext" src={this.props.music.Cover} width="500" height="400"></img>
                         </Card.Text>
-                        <p style={{ fontSize: '30px' }}>{this.props.music.Cover}</p>
+                        <p style={{ fontSize: '30px' }}>{this.props.music.Band}</p>
                     </Card.Body>
-                    <Button variant="danger" onClick={this.DeleteAlbum}>Delete</Button>
+                    <Button variant="danger" onClick={this.DeleteAlbum}>Delete</Button>  
                 </Card>
 
             </div>

@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const port = 4000;
+const path = require('path');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require('mongoose');
@@ -28,7 +29,7 @@ mongoose.connect(myConnectionString, { useNewUrlParser: true });
 const Schema = mongoose.Schema;
 
 //what type of data im going to store
-const MusicSchema = new Schema({
+const    MusicSchema = new Schema({
     Album: String,
     Band: String,
     Cover: String

@@ -20,13 +20,13 @@ export class Show extends React.Component {
 
     ReloadData() {
         axios.get('http://localhost:4000/api/albums')
-            .then((response) => {
-                this.setState({ music: response.data })
-            })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
+        .then((response) => {
+            this.setState({ music: response.data })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
 
     // when this componet is visable this method gets exe
@@ -39,6 +39,7 @@ export class Show extends React.Component {
                 console.log(error);
             });
     }
+    //passing data and a method down to albums
     render() {
         return (
             <div className="App">
