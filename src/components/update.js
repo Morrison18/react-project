@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 
@@ -23,14 +22,14 @@ export class Update extends React.Component {
     // get the album by id and update the state 
     componentDidMount() {
         console.log(this.props.match.params.id);
-
-        axios.get('http://localhost:4000/api/albums/' + this.props.match.params.id)
+        
+        axios.get('http://localhost:4000/api/albums/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    _id: response.data._id,
-                    Album: response.data.Album,
-                    Band: response.data.Band,
-                    Cover: response.data.Cover
+                    _id:response.data.id,
+                    Album:response.data.Album,
+                    Band:response.data.Band,
+                    Cover:response.data.Cover
                 });
             })
             .catch((error) => {
@@ -56,22 +55,24 @@ export class Update extends React.Component {
     //only submit once
     onSubmit(r) {
         r.preventDefault();
-        alert('btn clicked' + this.state.Album + this.state.Band + this.state.Cover);
+        alert('btn clicked ' +' ' + this.state.Album +' ' + this.state.Band +' ' + this.state.Cover);
 
         const UpdateAlbum = {
             Album: this.state.Album,
             Band: this.state.Band,
             Cover: this.state.Cover,
             _id: this.state._id
-        }
+        };
         // making post req to server 
-        axios.put('http://localhost:4000/api/albums/'+ this.state._id, UpdateAlbum)
+        axios.put('http://localhost:4000/api/albums/'+this.state._id, UpdateAlbum)
         .then(res =>{
             console.log(res.data)
         })
-        .catch();
-    }
+        .catch((error)=>{
+            console.log(error);
+        });
 
+    }
 
     render() {
         return (

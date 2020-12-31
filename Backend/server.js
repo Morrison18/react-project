@@ -46,7 +46,7 @@ app.get('/api/albums', (req, res) => {
 });
 
 // show album by id
-app.get('/api/albums/:id', (req, res, next)=>{
+app.get('/api/albums/:id', (req, res )=>{
     console.log(req.params.id);
 
     MusicModel.findById(req.params.id, (err, data) =>{
@@ -68,7 +68,8 @@ app.put('/api/albums/:id', (req, res)=>{
     console.log("Update Album:"+ req.params.id);
     console.log(req.body);
 
-    MusicModel.findByIdAndUpdate(req.param.id, req.body, {new:true},(err,data)=>{
+    MusicModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+        (err,data)=>{
         res.send(data);
     })
 })

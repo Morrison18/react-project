@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Albums } from './albums';
 import axios from 'axios';
 
 

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card'; // import the bootstrap card 
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import {Link, link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 
@@ -29,7 +29,7 @@ constructor(){
 
     render() {
         return (
-            <body style={{ backgroundColor: '#b3b1b138'}}>
+      
             <div style={{margin: '.5% 20% 2.5% 20% '}} >
                 <Card style={{ textAlign: 'center', backgroundColor: '#a9f3d1'}}>
 
@@ -41,11 +41,11 @@ constructor(){
                         <p style={{ fontSize: '40px' }}>{this.props.music.Album}</p>
                     </Card.Body>
                     <Button variant="danger" onClick={this.DeleteAlbum} style={{ fontSize: '25px' }} >Delete</Button>  
-                    <Link to={"/update/"+ this.props.music._id} className="btn btn-info" style={{ fontSize: '25px' }}>Edit</Link>
+                    <Link to={"/update/"+this.props.music._id} className="btn btn-info" style={{ fontSize: '25px' }}>Edit</Link>
                 </Card>
 
             </div>
-            </body>
+        
         );
     }
 }

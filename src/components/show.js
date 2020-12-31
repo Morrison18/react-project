@@ -7,8 +7,8 @@ import axios from 'axios';
 
 export class Show extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.ReloadData = this.ReloadData.bind(this);
 
     }
