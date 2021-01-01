@@ -61,10 +61,10 @@ export class Update extends React.Component {
             Album: this.state.Album,
             Band: this.state.Band,
             Cover: this.state.Cover,
-            _id: this.state._id
+            _id: this.state.id
         };
         // making post req to server 
-        axios.put('http://localhost:4000/api/albums/'+this.state._id, UpdateAlbum)
+        axios.put('http://localhost:4000/api/albums/'+this.state.id, UpdateAlbum)
         .then(res =>{
             console.log(res.data)
         })

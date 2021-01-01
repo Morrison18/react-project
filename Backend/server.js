@@ -33,7 +33,7 @@ mongoose.connect(myConnectionString, { useNewUrlParser: true });
 const Schema = mongoose.Schema;
 
 //what type of data im going to store
-const    MusicSchema = new Schema({
+const MusicSchema = new Schema({
     Album: String,
     Band: String,
     Cover: String
@@ -50,33 +50,33 @@ app.get('/api/albums', (req, res) => {
 });
 
 // show album by id
-app.get('/api/albums/:id', (req, res )=>{
+app.get('/api/albums/:id', (req, res) => {
     console.log(req.params.id);
 
-    MusicModel.findById(req.params.id, (err, data) =>{
+    MusicModel.findById(req.params.id, (err, data) => {
         res.json(data);
     });
 })
 
 // deleting by id
-app.delete('/api/albums/:id', (req,res)=>{
-    console.log("delete Album:"+ req.params.id);
+app.delete('/api/albums/:id', (req, res) => {
+    console.log("delete Album:" + req.params.id);
 
-    MusicModel.findByIdAndDelete(req.params.id, (err, data)=> {
+    MusicModel.findByIdAndDelete(req.params.id, (err, data) => {
         res.send(data);
     })
 })
 
 // update function by id
-app.put('/api/albums/:id', (req, res)=>{
-    console.log("Update Album:"+ req.params.id);
-    console.log(req.body);
+app.put('/api/albums/:id', (req, res) => {
+    console.log("update Album:" + req.params.id);
 
-    MusicModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
-        (err,data)=>{
-        res.send(data);
-    })
+    MusicModel.findByIdAndUpdate(req.params.id,
+        (err, data) => {
+            res.send(data);
+        })
 })
+
 
 
 // writes to the db
@@ -95,8 +95,8 @@ app.post('/api/albums', (req, res) => {
 
 })
 
-app.get('*', (req,res)=>{
-    res.sendFile(path.join(__dirname+'/../build/index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../build/index.html'));
 })
 //listens for the url+port
 app.listen(port, () => {
