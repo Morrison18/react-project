@@ -7,15 +7,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require('mongoose');
 
-// cors allows you to make a req to a dif domain
-app.use(cors());
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+
 
 // config pointing to the build folder
 app.use(express.static(path.join(__dirname, '../build')));
@@ -69,7 +61,7 @@ app.delete('/api/albums/:id', (req, res) => {
 
 // update function by id
 app.put('/api/albums/:id', (req, res) => {
-    console.log("update Album:" + req.params.id);
+    console.log("update Album: " + req.params.id);
 
     MusicModel.findByIdAndUpdate(req.params.id,
         (err, data) => {
@@ -95,8 +87,9 @@ app.post('/api/albums', (req, res) => {
 
 })
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/../build/index.html'));
+
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/../build/index.html'));
 })
 //listens for the url+port
 app.listen(port, () => {

@@ -15,7 +15,8 @@ export class Update extends React.Component {
         this.state = {
             Band: "",
             Album: "",
-            Cover: ""
+            Cover: "",
+            id: ""
         }
     }
 
@@ -26,7 +27,7 @@ export class Update extends React.Component {
         axios.get('http://localhost:4000/api/albums/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    _id:response.data.id,
+                    id:this.props.match.params.id,
                     Album:response.data.Album,
                     Band:response.data.Band,
                     Cover:response.data.Cover
@@ -61,10 +62,10 @@ export class Update extends React.Component {
             Album: this.state.Album,
             Band: this.state.Band,
             Cover: this.state.Cover,
-            _id: this.state.id
+            id: this.state.id
         };
         // making post req to server 
-        axios.put('http://localhost:4000/api/albums/'+this.state.id, UpdateAlbum)
+        axios.put('http://localhost:4000/api/albums/'+ this.state.id, UpdateAlbum)
         .then(res =>{
             console.log(res.data)
         })
