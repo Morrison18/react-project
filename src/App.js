@@ -22,7 +22,7 @@ class App extends Component {
             <Navbar.Brand href="#home">MusicApp</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/show">Favorite Albums</Nav.Link>
+              <Nav.Link href="/show">Favourite Albums</Nav.Link>
               <Nav.Link href="/add">Add an Album</Nav.Link>
            
 
